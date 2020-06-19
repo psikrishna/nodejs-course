@@ -1,2 +1,3 @@
+const log =console.log
 const greenText=require('chalk')
-console.log(greenText.green('dodo'));
+log(greenText.inverse.bold.green(' dodo '));
