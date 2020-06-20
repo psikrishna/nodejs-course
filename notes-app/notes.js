@@ -51,7 +51,12 @@ const removeNote = function (title) {
     const notesToKeep = notes.filter(function (note) {
         return note.title !== title;
     });
-    log('note removed');
+    if(notesToKeep.length===notes.length){
+        log('note not found');
+    }
+    else{
+        log('note removed');
+    }
     saveNotes(notesToKeep);
 }
 
