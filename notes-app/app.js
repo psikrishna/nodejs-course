@@ -1,6 +1,6 @@
 const log = console.log;
 const formatOutput = require('chalk');
-const notes = require('./notes.js');
+const notes = require('./notes');
 const yargs = require('yargs');
 const { argv } = require('yargs');
 
@@ -21,7 +21,7 @@ yargs.command({
             type: 'string',
         },
     },
-    handler: function () {
+    handler: function (argv) {
         notes.addNote(argv.title, argv.body);
         //log(argv.title);
     },
@@ -32,8 +32,15 @@ yargs.command({
 yargs.command({
     command: 'remove',
     describe: 'remove a note',
-    handler: function () {
-        log('removing the note');
+    builder: {
+        title: {
+            describe: 'note title',
+            demandOption: true,
+            type: 'string',
+        },
+    },
+    handler: function (argv) {
+        notes.removeNote(argv.title);
     },
 });
 
@@ -56,6 +63,35 @@ yargs.command({
         log('reading the note');
     },
 });
+
+//create update command
+
+yargs.command({
+    command: 'update',
+    describe: 'update contents of a pre-exisiting note',
+    builder: {
+        title: {
+            describe: 'note title',
+            demandOption: true,
+            type: 'string',
+        },
+        body: {
+            describe: 'note body',
+            type: 'string',
+        },
+        updateTitle: {
+            describe: 'update the title of a pre-existing note',
+            type: 'string',
+        },
+        updateBody: {
+            describe: 'update the body of a pre-existing note',
+            type: 'string',
+        },
+    },
+    handler: function (argv) {
+        notes.updateNote(argv.title, argv.updateTitle, argv.updateBody);
+    },
+})
 
 yargs.parse();
 //log(yargs.argv);

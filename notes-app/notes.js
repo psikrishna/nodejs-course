@@ -44,7 +44,46 @@ const loadNotes = function () {
     }
 }
 
+//function to remove notes
+
+const removeNote = function (title) {
+    const notes = loadNotes();
+    const notesToKeep = notes.filter(function (note) {
+        return note.title !== title;
+    });
+    log('note removed');
+    saveNotes(notesToKeep);
+}
+
+//function to update note
+
+const updateNote = function (title, updatedTitle, updatedBody) {
+    const notes = loadNotes();
+    const duplicateNotes = notes.filter(function (note) {
+        log(note.title);
+        if (note.title === title) {
+            note.title = updatedTitle;
+            note.body = updatedBody;
+        }
+        return note.title === title;
+    });
+    if (duplicateNotes.length === 0) {
+        log('note does not exist');
+    }
+    else {
+        // log(notes.title);
+        // log("ABC");
+        // notes.title = updatedTitle;
+        // notes.body = updatedBody;
+        // log(notes.title);
+        saveNotes(notes);
+        log('note updated');
+    }
+}
+
 module.exports = {
     getNotes: getNotes,
     addNote: addNote,
+    removeNote: removeNote,
+    //updateNote: updateNote,
 }
