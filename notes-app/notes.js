@@ -57,8 +57,8 @@ const removeNote = function (title) {
     }
     else {
         log(chalk.green.inverse('note removed'));
+        saveNotes(notesToKeep);
     }
-    saveNotes(notesToKeep);
 }
 
 //function to update note
