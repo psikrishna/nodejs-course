@@ -1,37 +1,8 @@
 const log = console.log;
 const formatOutput = require('chalk');
-const getNotes = require('./notes');
+const notes = require('./notes.js');
 const yargs = require('yargs');
-const { describe, argv } = require('yargs');
-//const command=process.argv[2];
-
-//========================================
-
-//formatting the output in cli
-
-// log(formatOutput.inverse.bold.green(' dodo '));
-// log(process.argv[2]);
-
-//========================================
-
-//basic user input cli
-
-// if(command==='add'){
-//     log('Adding Note');
-// }
-// else if(command==='remove'){
-//     log('Removing Note');
-// }
-// else{
-//     log('ripe dodo');
-// }
-
-// log(process.argv);
-// log(yargs.argv);
-
-//========================================
-
-//add,remove,read and list notes
+const { argv } = require('yargs');
 
 //create add command
 
@@ -51,8 +22,8 @@ yargs.command({
         },
     },
     handler: function () {
-        log('note title: ' + argv.title);
-        log('note body : ' + argv.body);
+        notes.addNote(argv.title, argv.body);
+        //log(argv.title);
     },
 });
 
