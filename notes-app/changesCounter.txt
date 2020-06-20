@@ -1,1 +1,2 @@
-minor changes count: 1
+p.s.: change after committing
+minor changes count: 3
