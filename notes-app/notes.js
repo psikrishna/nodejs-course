@@ -1,17 +1,13 @@
 const fs = require('fs');
 const chalk = require('chalk');
 const log = console.log;
-const getNotes = function () {
-    return 'your notes...';
-}
+const getNotes = () => { return 'your notes...' }
 
 //function to  add notes
 
-const addNote = function (title, body) {
+const addNote = (title, body) => {
     const notes = loadNotes();
-    const duplicateNotes = notes.filter(function (note) {
-        return note.title === title;
-    });
+    const duplicateNotes = notes.filter((note) => note.title === title);
     if (duplicateNotes.length === 0) {
         notes.push({
             title: title,
@@ -27,14 +23,14 @@ const addNote = function (title, body) {
 
 //function to save notes
 
-const saveNotes = function (notes) {
+const saveNotes = (notes) => {
     const dataJSON = JSON.stringify(notes);
     fs.writeFileSync('notes.JSON', dataJSON);
 }
 
 //function to load notes
 
-const loadNotes = function () {
+const loadNotes = () => {
     try {
         const dataBuffer = fs.readFileSync('notes.JSON');
         const dataJSON = dataBuffer.toString();
@@ -47,43 +43,15 @@ const loadNotes = function () {
 
 //function to remove notes
 
-const removeNote = function (title) {
+const removeNote = (title) => {
     const notes = loadNotes();
-    const notesToKeep = notes.filter(function (note) {
-        return note.title !== title;
-    });
+    const notesToKeep = notes.filter((note) => note.title !== title);
     if (notesToKeep.length === notes.length) {
         log(chalk.red.inverse('note not found'));
     }
     else {
         log(chalk.green.inverse('note removed'));
         saveNotes(notesToKeep);
-    }
-}
-
-//function to update note
-
-const updateNote = function (title, updatedTitle, updatedBody) {
-    const notes = loadNotes();
-    const duplicateNotes = notes.filter(function (note) {
-        log(note.title);
-        if (note.title === title) {
-            note.title = updatedTitle;
-            note.body = updatedBody;
-        }
-        return note.title === title;
-    });
-    if (duplicateNotes.length === 0) {
-        log('note does not exist');
-    }
-    else {
-        // log(notes.title);
-        // log("ABC");
-        // notes.title = updatedTitle;
-        // notes.body = updatedBody;
-        // log(notes.title);
-        saveNotes(notes);
-        log('note updated');
     }
 }
 
