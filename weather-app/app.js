@@ -6,13 +6,21 @@ const forecast = require('./utils/forecast')
 const log = console.log;
 
 geocode('Allahabad', (error, data) => {
-    log(chalk.red.inverse.bold('error:', error));
-    log('data:', data);
+    if (error) {
+        log(chalk.red.inverse.bold('error:', error));
+    }
+    else {
+        log('data:', data);
+    }
 });
 
 forecast(25.44202, 81.73326, (error, data) => {
-    log(chalk.red.inverse.bold('error:', error));
-    log('data:', data);
+    if (error) {
+        log(chalk.red.inverse.bold('error:', error));
+    }
+    else {
+        log('data:', data);
+    }
 })
 
 //const url = 'http://api.weatherstack.com/current?access_key=' + apiConfig.weather_api_key + '&query=' + lat + ',' + lng + '&units=m';
