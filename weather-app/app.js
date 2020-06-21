@@ -5,5 +5,6 @@ const log = console.log;
 const url = 'http://api.weatherstack.com/current?access_key=' + apiConfig.weather_api_key + '&query=New%20York';
 
 request({ url: url, json: true }, (error, response) => {
-    log(response.body.current);
+    //log(response.body.current);
+    log('It is currently ' + response.body.current.temperature + ' degrees out. There is a ' + response.body.current.precip + ' % chance of rain.')
 });
