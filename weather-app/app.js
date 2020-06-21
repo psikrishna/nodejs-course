@@ -1,13 +1,19 @@
 const apiConfig = require('../apiKeys');
 const request = require('postman-request');
 const chalk = require('chalk');
-const geocode = require('./utils/geocode')
+const geocode = require('./utils/geocode');
+const forecast = require('./utils/forecast')
 const log = console.log;
 
 geocode('Allahabad', (error, data) => {
-    log('error:', error)
-    log('data:', data)
+    log(chalk.red.inverse.bold('error:', error));
+    log('data:', data);
 });
+
+forecast(25.44202, 81.73326, (error, data) => {
+    log(chalk.red.inverse.bold('error:', error));
+    log('data:', data);
+})
 
 //const url = 'http://api.weatherstack.com/current?access_key=' + apiConfig.weather_api_key + '&query=' + lat + ',' + lng + '&units=m';
 
