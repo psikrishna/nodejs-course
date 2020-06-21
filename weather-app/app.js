@@ -9,15 +9,15 @@ if (!address) {
     log(chalk.red.bold.inverse('no address provided'));
 }
 else {
-    geocode(address, (error, data) => {
+    geocode(address, (error, { latitude, longitude, location } = {}) => {
         if (error) {
             return log(chalk.red.inverse.bold('error:', error));
         }
-        forecast(data.latitude, data.longitude, (error, forecastdata) => {
+        forecast(latitude, longitude, (error, forecastdata) => {
             if (error) {
                 return log(chalk.red.inverse.bold('error:', error));
             }
-            log(data.location);
+            log(location);
             log(forecastdata);
         })
     });
