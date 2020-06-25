@@ -8,4 +8,4 @@ package-lock.json
 test/*.log
 practice/
 *.pdf
-src/
+web-server/src/
