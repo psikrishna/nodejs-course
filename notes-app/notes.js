@@ -7,7 +7,7 @@ const log = console.log;
 const addNote = (title, body) => {
     const notes = loadNotes();
     const duplicateNote = notes.find((note) => notes.title === title);
-    //debugger
+    //debugger to be tried in chrome tools
     if (!duplicateNote) {
         notes.push({
             title: title,
