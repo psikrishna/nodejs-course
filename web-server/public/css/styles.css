@@ -15,6 +15,7 @@ body {
 .main-content p {
     margin: 10px;
     color: #edf5e1;
+    font-weight: bold;
 }
 
 footer {
