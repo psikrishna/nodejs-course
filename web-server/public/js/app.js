@@ -1,7 +1,13 @@
 const log = console.log;
 
-fetch('http://puzzle.mead.io/puzzle').then((response)=>{
+fetch('http://localhost:3000/weather?address=@@').then((response)=>{
     response.json().then((data)=>{
-        log(data);
-    });
+        if(data.error){
+            log(data.error)
+        }
+        else{
+            log(data.location)
+            log(data.forecast)
+        }
+    })
 });
