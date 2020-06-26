@@ -46,7 +46,6 @@ footer p {
     margin-top: -5px;
     margin-bottom: 10px;
     font-weight: bold;
-    text-transform: uppercase;
 }
 
 .navbar div {
@@ -64,4 +63,15 @@ footer p {
 
 .navbar a:hover {
     color: #8ee4af;
+}
+
+.descriptionTitle {
+    font-size: 1.5em;
+    color: #379683 !important;
+    align-items: center;
+}
+
+.wrapper {
+    margin: 50px;
+    text-align: center;
 }

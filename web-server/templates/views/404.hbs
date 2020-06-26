@@ -4,13 +4,16 @@
 <head>
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="icon" href="/img/weather.png">
-    <title>error</title>
+    <title>Error</title>
 </head>
 
 <body>
     <div class="main-content">
         {{>header}}
-        <p>{{errorMessage}}</p>
+        <div class="wrapper">
+            <p style="font-size: 100px; color: #379683">{{messageText}}</p>
+            <p>{{errorMessage}}</p>
+        </div>
     </div>
     {{>footer}}
 </body>
