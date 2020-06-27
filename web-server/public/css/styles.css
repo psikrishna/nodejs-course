@@ -75,3 +75,13 @@ footer p {
     margin: 50px;
     text-align: center;
 }
+
+.forecast-1 {
+    font-size: 50px;
+    color: #379683 !important;
+}
+
+.forecast-2 {
+    font-size: 25px;
+    color: #edf5e1;
+}
