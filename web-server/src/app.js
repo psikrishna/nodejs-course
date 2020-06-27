@@ -6,6 +6,7 @@ const forecast = require('./utils/forecast');
 const log = console.log;
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 // define paths for express config
 const publicDirectoryPath = path.join(__dirname, '../public');
@@ -65,7 +66,7 @@ app.get('/weather', (req, res) => {
             //     errorMessage: 'Please enter a valid address to look for the weather.',
             //     messageText: 'ERROR',
             // });
-             return res.send({ error })
+            return res.send({ error })
         }
         forecast(latitude, longitude, (error, forecastdata) => {
             if (error) {
@@ -96,6 +97,6 @@ app.get('*', (req, res) => {
 });
 
 // for the dev
-app.listen(3000, () => {
-    log('server up on port 3000')
+app.listen(port, () => {
+    log('server up on port ' + port)
 });
